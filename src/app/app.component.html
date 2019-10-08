@@ -1,0 +1,55 @@
+
+    <form  (ngSubmit)="onSubmit()" #searchform="ngForm" class="formclass" >
+       <div class="flightno">
+        <input  type="number"  class="form-control inputline" placeholder="FlightNumber" [(ngModel)]=flightnumber  name="FlightNumber"/>
+       </div >
+       <span style="font-weight:bold;font-size:15px;padding:5px;margin-top: 30px;
+       margin-bottom: 30px;">OR</span>
+        <div class="originclass">
+            <input  type="text" class="form-control inputline" [(ngModel)]="origin" style="margin-right:10px" placeholder="Origin" name="Origin"  />
+            <input  type="text" class="form-control inputline" [(ngModel)]="dest"  placeholder="destination" name="destination" />
+        </div>
+        <input type="date" class="form-control dateclass" placeholder="date"  name="date1" [(ngModel)]="date1" required/><span class="requiredclass" >*</span>
+        <button type="submit"     class="form-control btn btn-primary btn-lg buttonstyle">Search</button>
+        
+           
+    </form>
+    <div style="color:red;font-size:12px" *ngIf="datecheck == true">
+        <p>Please enter Date</p>
+    </div>
+    <div style="color:red;font-size:12px" *ngIf="criteriacheck == true">
+        <p>Please enter either flightnumber or Origin and Destination</p>
+    </div>
+    <div style="color:red;font-size:12px" *ngIf="flightnumbercheck == true">
+        <p>Please enter valid flightnumber </p>
+    </div>
+<table *ngIf="finalResult.length > 0" class="table table-bordered">
+<tr>
+    <th>Aircraft</th>
+    <th>Arrival</th>
+    <th>Carrier</th>
+    <th>Departure</th>
+     <th>Destination</th>
+     <th>Distance</th>
+     <th>FlightNumber</th>
+     <th>Origin</th>
+     <th>Distance</th>
+     <th>Status</th>
+     <th>TravelTime</th>
+
+</tr>
+<tr *ngFor="let value of finalResult">
+    <td>{{value['aircraft']}}</td>
+    <td>{{value['arrival']}}</td>
+    <td>{{value['carrier']}}</td>
+    <td>{{value['departure']}}</td>
+    <td>{{value['destination']}}</td>
+    <td>{{value['distance']}}</td>
+    <td>{{value['flightNumber']}}</td>
+    <td>{{value['origin']}}</td>
+    <td>{{value['distance']}}</td>
+    <td>{{value['status']}}</td>
+    <td>{{value['travelTime']}}</td>
+    
+</tr>
+</table>

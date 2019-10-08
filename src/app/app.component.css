@@ -1,0 +1,66 @@
+.flightno{
+    border: 2px solid grey;
+    padding:20px;
+    margin:5px;
+    height:auto;
+    width:35%;
+    text-align:center;
+    justify-content: space-around;
+    display:flex;
+    flex-direction: row;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+
+}
+.originclass{
+    border: 2px solid grey;
+    padding:20px;
+   margin:5px;
+    height:auto;
+    width:50%;
+    text-align:center;
+    justify-content: space-between;
+    display:flex;
+    flex-direction: row;
+    padding-top: 30px;
+    padding-bottom: 30px;
+ 
+    
+}
+.formclass{
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.dateclass{
+    width:15%;
+    padding:20px;
+   margin:5px;
+   margin-top: 30px;
+   margin-bottom: 30px;
+
+    
+}
+.inputline{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+}
+.buttonstyle{
+    text-align:center;
+    width:15%;
+  
+   margin:5px;
+   margin-top: 30px;
+   margin-bottom: 30px;
+}
+.requiredclass{
+    margin-left:0px;
+    font-weight:Bold;
+    margin-top: 30px;
+ margin-bottom: 30px;
+ margin-right:35px;
+ font-size:15px;
+}
