@@ -18,7 +18,7 @@
         <p>Please enter Date</p>
     </div>
     <div style="color:red;font-size:12px" *ngIf="criteriacheck == true">
-        <p>Please enter either flightnumber or Origin and Destination</p>
+        <p>Please enter either  flightnumber or  Origin and Destination</p>
     </div>
     <div style="color:red;font-size:12px" *ngIf="flightnumbercheck == true">
         <p>Please enter valid flightnumber </p>
@@ -53,3 +53,6 @@
     
 </tr>
 </table>
+<div *ngIf="finalResult.length == 0 && submitindicator == true ">
+    <p>No row to display</p>
+    </div>

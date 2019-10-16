@@ -10,7 +10,7 @@ import { DatePipe } from '@angular/common';
 })
 export class AppComponent implements OnInit {
   searchResult;
-  finalResult=[];
+  finalResult:any[]=[];
    criteriacheck:Boolean=false;
   flightnumbercheck:Boolean=false;
   origincheck:Boolean=false;
@@ -20,11 +20,16 @@ export class AppComponent implements OnInit {
  origin:any;
  dest:any;
  date1:any;
+ submitindicator:Boolean= false;
   constructor(private service:SearchService, private datePipe: DatePipe){
 
   }
   onSubmit(){
-       
+    this.submitindicator= false;
+    this.finalResult=[]; 
+    this.datecheck = false;
+    this.criteriacheck = false;
+    this.flightnumbercheck = false;
     if(this.date1 == undefined || this.date1 == '' ){
       this.datecheck=true;
       return 0;
@@ -33,13 +38,14 @@ export class AppComponent implements OnInit {
      else{
        this.datecheck = false;
      }
-    if (this.flightnumber == undefined){
-      if(this.origin == undefined && this.dest == undefined){
+    if (this.flightnumber == undefined || this.flightnumber == null){
+      if(this.origin == undefined || this.dest == undefined || this.origin == '' || this.dest == '') {
         this.criteriacheck = true;
         return 0;
       }
     }
       else{
+        this.criteriacheck = false;
         if(isNaN(this.flightnumber)){
           this.flightnumbercheck = true;
           return 0;
@@ -56,21 +62,14 @@ export class AppComponent implements OnInit {
 
   }
   getsearchResult(){
+    this.submitindicator= true;
     var tempresult =this.service.getSearchResults()
     tempresult.subscribe(
       (data)=>{
      
         this.searchResult = data}
     );
-    var query='';
-    var query1='';
-    if(this.flightnumber){
-      query = ''
-    }
-    if(this.origin){
-      query1 = 'data.origin == this.origin && data.destination == this.dest' 
-    }
-    query=query+'data.'
+    
     var tempdate= this.datePipe.transform(this.date1, 'yyyy-MM-dd').toString();
     var temp1;
      temp1=this.searchResult.filter((data)=>
@@ -92,12 +91,12 @@ this.finalResult= temp1;
   
   }
   ngOnInit(){
-    var tempresult =this.service.getSearchResults()
+  /*  var tempresult =this.service.getSearchResults()
     tempresult.subscribe(
       (data)=>{
         console.log(data);
         this.searchResult = data}
-    );
+    );*/
 
   }
 }
