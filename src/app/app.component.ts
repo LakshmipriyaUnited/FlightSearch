@@ -24,8 +24,8 @@ export class AppComponent implements OnInit {
 
   }
   onSubmit(){
+    this.finalResult=[];
     this.submitindicator= false;
-    this.finalResult=[]; 
     this.datecheck = false;
     this.criteriacheck = false;
     if(this.date1 == undefined || this.date1 == '' ){
@@ -52,30 +52,30 @@ export class AppComponent implements OnInit {
 
   }
    getSearchResult(){
- 
+   
       this.submitindicator= true;
       var tempdate= this.datePipe.transform(this.date1, 'yyyy-MM-dd').toString();
-      var temp1= this.searchResult;
-      temp1=temp1.filter((data)=>
-            data.arrival.substring(0,10) == tempdate
-        
-      );
-    if(this.flightnumber){
-      if(temp1.length > 0){
+      var temp1=this.searchResult;
+      if(this.flightnumber && this.origin && this.dest){
         temp1=temp1.filter((data)=>
-        (data['flightNumber'] == this.flightnumber)
-        )
-      }
-      
-    }
-    if(this.origin && this.dest){
+        (data['flightNumber'] == this.flightnumber &&  data['origin'] == this.origin && data['destination'] == this.dest &&  data.arrival.substring(0,10) == tempdate )
+      );
+      }else if(this.flightnumber){
+        if(temp1.length > 0){
+          temp1=temp1.filter((data)=>
+          (data['flightNumber'] == this.flightnumber &&  data.arrival.substring(0,10) == tempdate)
+          )
+        }
+
+        }
+        else if(this.origin && this.dest){
       temp1=temp1.filter((data)=>
-        (data['origin'] == this.origin && data['destination'] == this.dest)
+        (data['origin'] == this.origin && data['destination'] == this.dest &&  data.arrival.substring(0,10) == tempdate )
       );
     }
 
 this.finalResult= temp1;
-  this.flightnumber ='';
+  this.flightnumber =null;
   this.origin ='';
   this.dest = '';
   this.date1='';
