@@ -9,7 +9,7 @@ export class SearchService {
 
   constructor( private http:HttpClient ) { }
 
-  getSearchResults(){
+  getData(){
     return this.http.get(Constants.SEARCH_URL)
                    
   }

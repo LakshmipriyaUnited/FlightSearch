@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule,ReactiveFormsModule  }   from '@angular/forms';
+import { FormsModule  }   from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import {SearchService} from './search.service';
 
 @NgModule({
   declarations: [
@@ -14,10 +15,10 @@ import { DatePipe } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,ReactiveFormsModule
+    FormsModule
     
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
