@@ -64,3 +64,17 @@
  margin-right:35px;
  font-size:15px;
 }
+.errorclass{
+    color:red;
+    font-size:12px
+}
+.orclass{
+    font-weight:bold;
+    font-size:15px;
+    padding:5px;
+    margin-top: 30px;
+       margin-bottom: 30px;
+}
+.orginmargin{
+    margin-right:10px
+}

@@ -3,10 +3,9 @@
        <div class="flightno">
         <input  type="number"  class="form-control inputline" placeholder="FlightNumber" [(ngModel)]=flightnumber  name="FlightNumber"/>
        </div >
-       <span style="font-weight:bold;font-size:15px;padding:5px;margin-top: 30px;
-       margin-bottom: 30px;">OR</span>
+       <span class="orclass">OR</span>
         <div class="originclass">
-            <input  type="text" class="form-control inputline" [(ngModel)]="origin" style="margin-right:10px" placeholder="Origin" name="Origin"  />
+            <input  type="text" class="form-control inputline orginmargin" [(ngModel)]="origin" placeholder="Origin" name="Origin"  />
             <input  type="text" class="form-control inputline" [(ngModel)]="dest"  placeholder="destination" name="destination" />
         </div>
         <input type="date" class="form-control dateclass" placeholder="date"  name="date1" [(ngModel)]="date1" required/><span class="requiredclass" >*</span>
@@ -14,13 +13,13 @@
         
            
     </form>
-    <div style="color:red;font-size:12px" *ngIf="datecheck == true">
+    <div class="errorclass" *ngIf="datecheck == true">
         <p>Please enter Date</p>
     </div>
-    <div style="color:red;font-size:12px" *ngIf="criteriacheck == true">
+    <div class="errorclass" *ngIf="criteriacheck == true">
         <p>Please enter either  flightnumber or  Origin and Destination</p>
     </div>
-    <div style="color:red;font-size:12px" *ngIf="flightnumbercheck == true">
+    <div class="errorclass" *ngIf="flightnumbercheck == true">
         <p>Please enter valid flightnumber </p>
     </div>
 <table *ngIf="finalResult.length > 0" class="table table-bordered">
