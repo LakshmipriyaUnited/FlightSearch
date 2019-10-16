@@ -52,20 +52,14 @@ export class AppComponent implements OnInit {
 
   }
    getSearchResult(){
-   
-  /*  var tempresult:Observable<any>;
-    tempresult =  this.service.getData();
-     tempresult.subscribe(
-      (data)=>{this.searchResult =  data}
-    );*/
-   // setTimeout(() => {
+ 
       this.submitindicator= true;
       var tempdate= this.datePipe.transform(this.date1, 'yyyy-MM-dd').toString();
-    var temp1;
-     temp1=this.searchResult.filter((data)=>
-           data.arrival.substring(0,10) == tempdate
-       
-    );
+      var temp1= this.searchResult;
+      temp1=temp1.filter((data)=>
+            data.arrival.substring(0,10) == tempdate
+        
+      );
     if(this.flightnumber){
       if(temp1.length > 0){
         temp1=temp1.filter((data)=>
@@ -85,15 +79,14 @@ this.finalResult= temp1;
   this.origin ='';
   this.dest = '';
   this.date1='';
-  //  }, 3000);
+  
     
   }
-  async ngOnInit(){
-  var tempresult = await this.service.getData()
+   ngOnInit(){
+  var tempresult =  this.service.getData()
     tempresult.subscribe(
       (data)=>{
-        console.log(data);
-        this.searchResult = data}
+     this.searchResult = data}
     );
 
   }
